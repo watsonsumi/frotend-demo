@@ -9,10 +9,10 @@ function Copyright(props) {
 			align='center'
 			{...props}
 		>
-			{'Copyright © '}
-			<Link color='inherit' href='https://mui.com/'>
+			{'DEMO © '}
+			{/* <Link color='inherit' href='https://mui.com/'>
 				Servicio.com
-			</Link>{' '}
+			</Link>{' '} */}
 			{new Date().getFullYear()}
 			{'.'}
 		</Typography>

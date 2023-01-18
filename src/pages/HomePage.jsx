@@ -7,8 +7,10 @@ import {
 	Typography,
 	FormControl,
 	InputLabel,
-	CardContent, Box, 
+	CardContent, Box
   } from "@mui/material";
+  import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+
   import { PhoneIphone } from "@mui/icons-material";
   
   import Copyright from "../components/Copyright";
@@ -17,7 +19,10 @@ import {
   import { useSelector } from 'react-redux';
 import { register } from '../redux/actions/registerActions';
 import { axiosFetch, axiosFetchEmail } from '../config/url/url';
+import SweetAlert from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import axios from 'axios';
+const MySwal = withReactContent(SweetAlert);
 const HomePage = () => {
 
 const estado = JSON.parse(localStorage.getItem('data'));
@@ -85,8 +90,47 @@ const [values, setValues]=useState({
       descripcion: values.descripcion,
 
     }
+
+    try {
     console.log(dataInput);
-   const { data } =  axiosFetch.post('/api/registro', dataInput);
+  //  const { data } =  axiosFetch.post('/api/registro', dataInput);
+        let res =  axiosFetch.post('/api/registro', dataInput);
+        // let response =  JSON.stringify(res.data);
+
+        console.log(res.message);
+   MySwal.fire({
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    title: "Se envio Email exitosamente...",
+    icon: "success", 
+   
+    onOpen: async () => {
+      MySwal.showLoading();
+      setValues({ ...values, cliente: '', nropedido: '',
+      telefono: '',
+      idcliente: '',
+      email: '',
+      receptor: '',
+      fepedido: '',
+      feinicio: '',
+      fefinalizacion: '',
+      autorizado: '',
+      descripcion: ''});
+    },
+  });
+  setValues({ ...values, cliente: '', nropedido: '',
+  telefono: '',
+  idcliente: '',
+  email: '',
+  receptor: '',
+  fepedido: '',
+  feinicio: '',
+  fefinalizacion: '',
+  autorizado: '',
+  descripcion: ''});
+} catch (e) {
+  MySwal.close();
+}
   }
 		
 
@@ -101,60 +145,13 @@ const [values, setValues]=useState({
 			}}
 			className='container_Home'
 		>
-			<Box
-				className='home_header'
-				sx={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					marginBottom: '40px',
-					width: '100%',
-				}}
-			>
-				<Box
-					className='welcome_user'
-					sx={{
-						display: 'flex',
-					}}
-				>
-					<Typography
-						sx={{
-							fontSize: '32px',
-							display: 'flex',
-							fontWeight: '500',
-							color: 'rgba(40, 40, 40, 0.8)',
-						}}
-					>
-						Bienvenida,{'\u00A0'}
-					</Typography>
-					<Typography
-						sx={{
-							fontSize: '32px',
-							fontWeight: '700',
-							color: 'rgba(40, 40, 40, 0.8)',
-						}}
-					>
-					</Typography>
-				</Box>
-				<Box
-					className='circles'
-					sx={{
-						display: 'flex',
-						gap: '14px',
-					}}
-				>
-					<Box className='circle circle_user' />
-					<Box className='circle circle_cart'>
-						{/* <Cart className='cartIcon' /> */}
-					</Box>
-				</Box>
-			</Box>
 			<Grid
       // container
       wrap="nowrap"
       className="home_orders"
       sx={{
         backgroundColor: "#FFFFFF",
-        borderRadius: "20px",
+        borderRadius: "0px",
         padding: "24px 0 32px 24px",
         boxShadow: "0px 1px 12px rgba(0, 0, 0, 0.06)",
       }}
@@ -188,7 +185,7 @@ const [values, setValues]=useState({
                     fullWidth: true,
                   }}
                   type="text"
-				  defaultValue='Sumilda Bengolea'//{values.cliente}
+				          defaultValue={estado.nombre}//'Sumilda Bengolea'//{values.cliente}
                   handleChange={handleChange}
                 />
                 <CustomInput
@@ -220,7 +217,7 @@ const [values, setValues]=useState({
                   formControlProps={{
                     fullWidth: true
                   }}
-				  defaultValue={931741680}
+				          defaultValue={estado.telefono}//{931741680}
                   handleChange={handleChange}
                   type="text"
                 />
@@ -231,7 +228,7 @@ const [values, setValues]=useState({
                   formControlProps={{
                     fullWidth: true,
                   }}
-				  defaultValue="100001"
+				          defaultValue={estado.idcliente}//"100001"
                   type="text"
                   handleChange={handleChange}
                 />
@@ -250,7 +247,7 @@ const [values, setValues]=useState({
                   formControlProps={{
                     fullWidth: true
                   }}
-				  defaultValue="macu05b@gmail.com"
+				          defaultValue={estado.email}//"macu05b@gmail.com"
                   handleChange={handleChange}
                   type="text"
                 />
@@ -288,7 +285,7 @@ const [values, setValues]=useState({
                       fullWidth: true
                     }}
                     handleChange={handleChange}
-                    type="text"
+                    type="date"
                   />
                 <CustomInput
                   labelText="Fecha finalizacion prevista"
@@ -297,7 +294,7 @@ const [values, setValues]=useState({
                   formControlProps={{
                     fullWidth: true,
                   }}
-                  type="text"
+                  type="date"
                   value={"Hola"}
                   onChange={handleChange}
                 />
@@ -326,7 +323,6 @@ const [values, setValues]=useState({
                     fullWidth: true,
                   }}
                   type="text"
-                  value={"Hola"}
                   onChange={handleChange}
                 />
             </Grid>
@@ -350,9 +346,19 @@ const [values, setValues]=useState({
           </CardContent>
           <Button
             fullWidth
-            variant="contained-primary"
+            // variant="contained-primary"
             // startIcon={<PhoneIphone />}
-            onClick={handleSubmit}
+            onClick={handleSubmit} 
+            sx={{
+              // fontSize: "32px",
+              fontWeight: "700",
+              color: "rgba(40, 40, 40, 0.8)",
+              textAlign: "center",
+              background: 'black',
+              color: 'aliceblue',
+              borderRadius: '30px',
+              padding: '10px',
+            }}
           >
             Enviar
           </Button>
