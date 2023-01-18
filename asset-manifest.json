@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/%7Bfrotend-demo%7D/static/css/main.6f82ee95.css",
-    "main.js": "/%7Bfrotend-demo%7D/static/js/main.e9f1c1dd.js",
-    "static/js/787.4690b24f.chunk.js": "/%7Bfrotend-demo%7D/static/js/787.4690b24f.chunk.js",
-    "static/media/logo.svg": "/%7Bfrotend-demo%7D/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/%7Bfrotend-demo%7D/index.html",
-    "main.6f82ee95.css.map": "/%7Bfrotend-demo%7D/static/css/main.6f82ee95.css.map",
-    "main.e9f1c1dd.js.map": "/%7Bfrotend-demo%7D/static/js/main.e9f1c1dd.js.map",
-    "787.4690b24f.chunk.js.map": "/%7Bfrotend-demo%7D/static/js/787.4690b24f.chunk.js.map"
+    "main.css": "/frotend-demo/static/css/main.6f82ee95.css",
+    "main.js": "/frotend-demo/static/js/main.ed600557.js",
+    "static/js/787.4690b24f.chunk.js": "/frotend-demo/static/js/787.4690b24f.chunk.js",
+    "static/media/logo.svg": "/frotend-demo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/frotend-demo/index.html",
+    "main.6f82ee95.css.map": "/frotend-demo/static/css/main.6f82ee95.css.map",
+    "main.ed600557.js.map": "/frotend-demo/static/js/main.ed600557.js.map",
+    "787.4690b24f.chunk.js.map": "/frotend-demo/static/js/787.4690b24f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6f82ee95.css",
-    "static/js/main.e9f1c1dd.js"
+    "static/js/main.ed600557.js"
   ]
 }
